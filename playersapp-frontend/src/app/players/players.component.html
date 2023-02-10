@@ -1,0 +1,13 @@
+<div class="">
+    <div class="row">
+        <div class="players" *ngFor="let player of players$ | async">
+            <div class="playerImg">
+                <img [src]="player.imgUrl" class="card-img-top" alt="...">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ player.name }}</h3>
+                <p class="card-text">{{ player.info }}</p>
+            </div>
+        </div>
+    </div>
+</div>

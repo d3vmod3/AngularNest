@@ -1,0 +1,14 @@
+.players{
+    border:1px solid blue;
+    width:400px;
+    height:400px;
+    margin: auto;
+}
+.players .playerImg{
+    display: flex;
+    justify-content: top;
+}
+/* .players .playerImg img{
+    width: 100%;
+    height: 100%;
+} */
