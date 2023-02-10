@@ -1,13 +1,18 @@
-<div class="">
-    <div class="row">
-        <div class="players" *ngFor="let player of players$ | async">
-            <div class="playerImg">
-                <img [src]="player.imgUrl" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">{{ player.name }}</h3>
-                <p class="card-text">{{ player.info }}</p>
-            </div>
+<h1 class="text-center text-primary">NBA PLAYERS</h1>
+<div class="row">
+    <div [ngClass]="{
+        'text-white': player.jerseyColor === 'dark' || player.jerseyColor === 'danger',
+        'text-dark': player.jerseyColor !== 'dark' && player.jerseyColor !== 'danger'
+        }" class="card bg-{{ player.jerseyColor }}"
+    *ngFor="let player of players$ | async">
+        <div class="card-header">
+            {{ player.info }}
+        </div>
+        <a href="{{ player.imgUrl }}">
+            <img [src]="player.imgUrl" class="card-img-top" alt="...">.
+        </a>
+        <div class="card-body">
+        <h4 class="card-text">{{ player.name }}</h4>
         </div>
     </div>
 </div>
