@@ -12,7 +12,7 @@ export class PlayersService {
         {
             name: 'Stephen Curry',
             imgUrl: 'https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254',
-            info: '#6 Guard - Golden State Warriors',
+            info: '#30 Guard - Golden State Warriors',
             jerseyColor: 'primary',
         },
         {
