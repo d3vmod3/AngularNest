@@ -10,10 +10,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CrudPlayersModule } from './crud-players/crud-players.module';
 import { CrudPlayersComponent } from './crud-players/crud-players.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
-    CrudPlayersComponent
+    CrudPlayersComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { CrudPlayersComponent } from './crud-players/crud-players.component';
     FontAwesomeModule,
     CrudPlayersModule,
     ModalModule.forRoot(),
+    ReactiveFormsModule
     
   ],
   providers: [
