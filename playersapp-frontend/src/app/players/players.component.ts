@@ -31,13 +31,14 @@ export class PlayersComponent implements OnInit {
   constructor (
     private playersService: PlayersService) {
       this.myForm = new FormGroup({
-        id: new FormControl('', [Validators.required]),
+        id: new FormControl(''),
         name: new FormControl('', [Validators.required]),
         imgUrl: new FormControl('', [Validators.required]),
         info: new FormControl('', [Validators.required]),
         jerseyColor: new FormControl('', [Validators.required]),
       });
   }
+ 
   AddorEdit:any;
   public openModal(){
     this.selectedPlayer = null;
@@ -60,6 +61,7 @@ export class PlayersComponent implements OnInit {
   ngOnInit(): void {
     // this.players$ = this.playersService.getPlayers();
     // $('.toast').toast('show');
+    // this.isInputDisabled = true;
     this.players$ = this.refreshPlayers$.pipe(switchMap(_ => this.playersService.getPlayers()));
   }
 
@@ -103,7 +105,7 @@ export class PlayersComponent implements OnInit {
       if ($('#actionTitle').text() === 'Edit Player'){
         if (this.myForm.valid) {
           this.playersService.updateData(this.myForm.value).subscribe(data => {
-            const index = this.data.findIndex(item => item.id === this.selectedPlayer.id);
+            const index = this.data.findIndex(player => player.id == this.selectedPlayer.id);
             this.data[index] = data;
             this.refreshPlayers$.next(false);
             this.myForm.reset();

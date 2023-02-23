@@ -24,8 +24,9 @@ export class PlayersService {
     }
 
     updateData(data: any){
-      // return this.httpClient.put("http://localhost:3000/players/${data.name}`", data);
-      return this.httpClient.put(`${this.API_URL}/${data.id}`, data);
+      console.log('Updating player with ID:', data.id);
+      console.log('API URL:', this.API_URL);
+      return this.httpClient.patch(`${this.API_URL}/${data.id}`, data);
     }
 
     deleteData(id: number){
