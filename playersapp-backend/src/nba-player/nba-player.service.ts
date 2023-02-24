@@ -12,7 +12,7 @@ export class NbaPlayerService {
     constructor( private readonly playerRepository: PlayerRepository ){}
 
     async getPlayerById(playerId:string): Promise<Player>{
-        return this.playerRepository.findOne({ playerId })
+        return this.playerRepository.findOne({ id: playerId })
     }
 
     async getPlayers(): Promise<Player[]>{

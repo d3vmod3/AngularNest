@@ -7,28 +7,27 @@ import { PlayersModule } from './players/players.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import { CrudPlayersModule } from './crud-players/crud-players.module';
-import { CrudPlayersComponent } from './crud-players/crud-players.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { PlayersInfoModule } from './players-info/players-info.module';
+import { RouterModule, Routes  } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CrudPlayersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PlayersModule,
     FontAwesomeModule,
-    CrudPlayersModule,
     ModalModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PlayersInfoModule,
     
   ],
   providers: [
-    CrudPlayersComponent
+    
   ],
   bootstrap: [AppComponent]
 })

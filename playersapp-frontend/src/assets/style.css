@@ -15,6 +15,18 @@
     margin: auto;
     margin:5px;
 }
+.card:hover{
+  cursor: pointer;
+}
+.avatar {
+  vertical-align: middle;
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  padding:5px;
+  border: 3px solid #343a40;
+  object-fit: cover;
+}
 /* .players{
     border:1px solid blue;
     width:400px;

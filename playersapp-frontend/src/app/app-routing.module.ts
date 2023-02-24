@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CrudPlayersComponent } from './crud-players/crud-players.component';
+import { PlayersInfoComponent } from './players-info/players-info.component';
 import { PlayersComponent } from './players/players.component';
 
 const routes: Routes = [
-  // { path:  '', redirectTo: '/players', pathMatch: 'full' },
-  // { path:  'players', component: PlayersComponent },
-  // { path:  'crud-players', component: CrudPlayersComponent },
+  { path:  '', redirectTo: '/players', pathMatch: 'full' },
+  { path:  'players', component: PlayersComponent },
+  { path:  'players-info/:id', component: PlayersInfoComponent },
 
 ];
 

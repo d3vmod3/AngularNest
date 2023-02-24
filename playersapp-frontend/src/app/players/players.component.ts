@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Observable,BehaviorSubject, switchMap } from 'rxjs';
+import { Observable,BehaviorSubject, switchMap, identity } from 'rxjs';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { PlayersService } from './players.service';
 
+import { Router,RouterModule } from '@angular/router';
 
 
 declare var formData: any;
@@ -29,7 +30,7 @@ export class PlayersComponent implements OnInit {
 
 
   constructor (
-    private playersService: PlayersService) {
+    private playersService: PlayersService, private router: Router) {
       this.myForm = new FormGroup({
         id: new FormControl(''),
         name: new FormControl('', [Validators.required]),
@@ -37,8 +38,14 @@ export class PlayersComponent implements OnInit {
         info: new FormControl('', [Validators.required]),
         jerseyColor: new FormControl('', [Validators.required]),
       });
+      
   }
- 
+
+  
+  onPlayerClick(id: string) {
+    this.router.navigate(['players-info', id]);
+  }
+
   AddorEdit:any;
   public openModal(){
     this.selectedPlayer = null;
@@ -56,14 +63,13 @@ export class PlayersComponent implements OnInit {
   public closeModal(){
     $('#exampleModal').modal('hide');
   }
-
-
   ngOnInit(): void {
-    // this.players$ = this.playersService.getPlayers();
+    // this.playerss = this.playersService.getPlayers();
     // $('.toast').toast('show');
     // this.isInputDisabled = true;
     this.players$ = this.refreshPlayers$.pipe(switchMap(_ => this.playersService.getPlayers()));
   }
+
 
   selectedPlayer: any;
   selectPlayer(player: any) {

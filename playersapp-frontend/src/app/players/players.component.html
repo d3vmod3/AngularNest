@@ -1,4 +1,3 @@
-
 <div aria-live="polite" aria-atomic="true" style="position:absolute;min-height: 200px;">
   <div class="toast" style="position: fixed; top: 0; right: 0;z-index: 1" data-delay="10000">
     <div class="toast-header text-light bg-primary">
@@ -13,35 +12,40 @@
   </div>
 </div>
 <div class="text-center">
-    <b class="app-title text-primary">NBA PLAYERS</b> 
     <button (click)="openModal()" class="btn btn-primary btn-lg">
-        <b class="fa fa-plus"></b>
+        Add Players <b class="fa fa-plus"></b>
     </button>
 </div>
 
 <br>
 <div style="position:relative;">
   <div class="row">
-    <div id="cards" [ngClass]="{
-        'text-white': player.jerseyColor === 'dark' || player.jerseyColor === 'danger',
-        'text-dark': player.jerseyColor !== 'dark' && player.jerseyColor !== 'danger'
+    <div routerLink="/players-info" id="cards" [ngClass]="{
+        'text-white': player.jerseyColor === 'dark' || player.jerseyColor === 'danger' || player.jerseyColor === 'primary' || player.jerseyColor === 'success',
+        'text-dark': player.jerseyColor !== 'dark' && player.jerseyColor !== 'danger' && player.jerseyColor !== 'primary' && player.jerseyColor !== 'success'
         }" class="card bg-{{ player.jerseyColor }}"
     *ngFor="let player of players$ | async">
         <div class="card-header">
             {{ player.info }}
 
             <div class="pull-right">
-              <button (click)="selectPlayer(player)" class="btn btn-outline-secondary btn-sm">
+              <button (click)="selectPlayer(player)" [ngClass]="{
+                'text-white': player.jerseyColor === 'dark' || player.jerseyColor === 'danger' || player.jerseyColor === 'primary' || player.jerseyColor === 'success',
+                'text-dark': player.jerseyColor !== 'dark' && player.jerseyColor !== 'danger' && player.jerseyColor !== 'primary' && player.jerseyColor !== 'success'
+                }"  class="btn btn-outline-{{ player.jerseyColor }} btn-sm">
                 <span class="fa fa-edit"></span>
               </button>
               &nbsp;
-              <button class="btn btn-outline-secondary btn-sm" (click)="deletePlayer(player)">
+              <button (click)="deletePlayer(player)" [ngClass]="{
+                'text-white': player.jerseyColor === 'dark' || player.jerseyColor === 'danger' || player.jerseyColor === 'primary' || player.jerseyColor === 'success',
+                'text-dark': player.jerseyColor !== 'dark' && player.jerseyColor !== 'danger' && player.jerseyColor !== 'primary' && player.jerseyColor !== 'success'
+                }" class="btn btn-outline-{{ player.jerseyColor }} btn-sm" >
                 <span class="fa fa-trash"></span>
               </button>
             </div>
             
         </div>
-        <a href="{{ player.imgUrl }}">
+        <a (click)="onPlayerClick(player.id)">
             <img [src]="player.imgUrl" class="card-img-top" alt="...">.
         </a>
         <div class="card-body">
@@ -67,6 +71,9 @@
         </div>
 
         <div class="modal-body">
+          <div *ngIf="selectedPlayer" class="text-center">
+            <img class="avatar" src="{{ selectedPlayer.imgUrl }}" alt="">
+          </div>
           <form [formGroup] = "myForm" *ngIf="AddorEdit">
             <div class="form-group">
               <input class="form-control" type="hidden" id="id" formControlName="id">

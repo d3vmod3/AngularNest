@@ -1,0 +1,24 @@
+<div *ngIf="player">
+    <img class="avatar" src="{{ player.imgUrl }}" alt="no-image">
+   <table class="table table-striped">
+        <thead>
+            <th>Label</th>
+            <th>Value</th>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>Name</td>
+                <td>{{ player.name }}</td>
+            </tr>
+            <tr>
+                <td>Info</td>
+                <td>{{ player.info }}</td>
+            </tr>
+            <tr>
+                <td>Jersey Color</td>
+                <td>{{ player.jerseyColor }}</td>
+            </tr>
+        </tbody>
+   </table>
+</div>

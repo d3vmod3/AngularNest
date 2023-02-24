@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 
@@ -17,6 +19,11 @@ export class PlayersService {
 
     getPlayers() {
       return this.httpClient.get<Response>(this.API_URL);
+    }
+
+    getPlayersById(id: number): Observable<Data> {
+      const url = `${this.API_URL}/${id}`;
+      return this.httpClient.get<Data>(url);
     }
 
     createData(data: any){

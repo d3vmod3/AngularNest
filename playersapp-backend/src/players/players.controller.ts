@@ -59,8 +59,8 @@ export class PlayersController {
     }
 
     @Get(':playerId')
-    async getUser(@Param('playerId') userId: string): Promise<Player> {
-      return this.nbaPlayersService.getPlayerById(userId);
+    async getUser(@Param('playerId') playerId: string): Promise<Player> {
+      return this.nbaPlayersService.getPlayerById(playerId);
     }
 
     @Post()
